@@ -1,0 +1,142 @@
+﻿@model IEnumerable<WebApplication7.Models.LoginCredential>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Display Credentials</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+        }
+
+        .table-container {
+            background-color: #ffffff; /* White container for table */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .table th {
+            background-color: #e9ecef; /* Light gray header background */
+            font-weight: bold;
+            color: #495057;
+            border-bottom: 2px solid #dee2e6; /* Stronger bottom border for header */
+        }
+
+        .table td {
+            border-bottom: 1px solid #dee2e6; /* Separator lines between rows */
+        }
+
+        .table tbody tr:hover {
+            background-color: #f0f0f0; /* Light gray on row hover */
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            border-radius: 5px;
+            padding: 8px 15px;
+            font-weight: bold;
+            text-decoration: none !important; /* Override default link styles */
+            display: inline-block; /* To apply padding and margins correctly */
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+                border-color: #0056b3;
+            }
+
+        .action-links a {
+            margin-right: 8px;
+            text-decoration: none;
+        }
+
+            .action-links a:hover {
+                text-decoration: underline;
+            }
+
+        h4 {
+            color: #343a40; /* Dark heading color */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .create-new-link {
+            margin-bottom: 20px;
+            text-align: right; /* Align "Create New" to the right */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="table-container">
+            <h4>Registered Credentials</h4>
+            <div class="create-new-link">
+                <a asp-action="Create" class="btn btn-primary">Create New</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Username)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Email)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Password)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CPassword)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Image)
+                            </th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Username)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Password)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CPassword)
+                                </td>
+                                <td>
+                                    <img src="~/images/@item.Image" height="100px" width="100px" />
+                                </td>
+                                <td class="action-links">
+                                    <a asp-action="Edit" asp-route-id="@item.LoginId">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.LoginId">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.LoginId">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

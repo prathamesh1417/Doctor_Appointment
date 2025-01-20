@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Pharmacy Web</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif; /* More modern and readable font */
+            background-color: #f0f7fa; /* Light, calming background */
+            color: #495057; /* Slightly darker, softer text color */
+            line-height: 1.6; /* Improved readability with better line spacing */
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: #ffffff; /* White navbar for clean look */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+
+            .navbar-brand img {
+                height: 45px; /* Slightly larger logo */
+                margin-right: 15px; /* More spacing for logo */
+            }
+
+            .navbar-brand span:first-child {
+                color: #007bff; /* Primary brand color - Blue */
+                font-size: 26px;
+                font-weight: bold;
+            }
+
+            .navbar-brand span:last-child {
+                color: #28a745; /* Secondary brand color - Green */
+                font-size: 26px;
+                font-weight: bold;
+                margin-left: 2px; /* Adjust spacing between brand parts */
+            }
+
+        .navbar-nav .nav-link {
+            color: #495057; /* Consistent nav link color */
+            font-weight: 600;
+            padding: 0.7rem 1rem; /* Increased padding for better touch area and spacing */
+            transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+            border-radius: 0.25rem; /* Slightly rounded nav links */
+            display: flex;
+            margin:10px;
+            align-items: center;
+        }
+
+            .navbar-nav .nav-link i {
+                margin-right: 8px; /* More spacing for icons */
+                font-size: 1.1rem; /* Slightly larger icons */
+            }
+
+            .navbar-nav .nav-link:hover,
+            .navbar-nav .nav-link.active { /* Active state styling */
+                color: #ffffff; /* White text on hover/active */
+             
+                background-color: #007bff; /* Primary hover/active background color */
+            }
+
+        .navbar-toggler {
+            border: none; /* Remove default border */
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 123, 255, 0.7)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* Blue navbar toggler icon */
+        }
+
+
+        /* Main Container Styling */
+        .container {
+            
+            margin-bottom: 3rem;
+        }
+
+        main {
+            background-color: #ffffff; /* White background for content area */
+            padding: 2rem; /* Padding inside content area */
+            border-radius: 0.5rem; /* Rounded corners for content area */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05); /* Soft shadow for content area */
+        }
+
+
+        /* Footer Styling */
+        .footer {
+            background-color: #e9ecef; /* Light gray footer background */
+            color: #6c757d; /* Softer footer text color */
+            padding: 25px 0;
+            text-align: center;
+            border-top: 1px solid #dee2e6; /* Subtle top border for separation */
+        }
+
+            .footer p {
+                margin-bottom: 0.5rem; /* Spacing for footer paragraphs */
+            }
+
+            .footer a {
+                color: #007bff; /* Primary link color in footer */
+                text-decoration: none;
+                font-weight: 600;
+                transition: color 0.3s ease;
+            }
+
+                .footer a:hover {
+                    color: #0056b3; /* Darker blue on hover */
+                    text-decoration: underline;
+                }
+
+            .footer i {
+                margin: 0 5px; /* Spacing around social icons */
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+            <!-- Changed navbar-dark to navbar-light and bg-light for white navbar -->
+            <div class="container">
+                <a class="navbar-brand" href="WebForm1.aspx">
+                    <img src="~/logo.png" alt="TrueMeds Logo" />
+                    <span style="font-size:25px; font-weight:bold;">True</span><span style="font-size:25px; font-weight:bold;">meds</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/Home/Index"><i class="bi bi-house"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/Create"><i class="bi bi-person-plus"></i> User Registration</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/login"><i class="bi bi-box-arrow-in-right"></i> User Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/BookApp"><i class="bi bi-person-badge"></i> Book Appointment</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/DoctorReg"><i class="bi bi-person-badge"></i> Doctor Sign In/Up </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="footer mt-5">
+        <div class="container">
+            <p>&copy; 2024 TrueMeds Pharmacy | All Rights Reserved</p>
+            <p>
+                Follow us on
+                <a href="#" target="_blank"><i class="bi bi-facebook"></i> Facebook</a>,
+                <a href="#" target="_blank"><i class="bi bi-twitter"></i> Twitter</a>, and
+                <a href="#" target="_blank"><i class="bi bi-instagram"></i> Instagram</a>
+            </p>
+        </div>
+    </footer>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

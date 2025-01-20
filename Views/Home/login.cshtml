@@ -1,0 +1,129 @@
+﻿@model WebApplication7.Models.LoginCredential
+@{
+    Layout = null;
+}
+
+<title>User Login</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" />
+<style>
+    body {
+        background: linear-gradient(135deg, #ff6600, #00ff99);
+        font-family: 'Arial', sans-serif;
+        color: #333;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #loginContainer {
+        position: absolute;
+        left: 550px;
+        top: 130px;
+        width: 100%;
+        max-width: 400px;
+        background-color: #ffffff;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    #Heading {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #3949ff;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    label {
+        font-weight: 600;
+        color: #3949ff;
+        margin-bottom: 8px;
+    }
+
+    input {
+        padding: 12px 15px;
+        border-radius: 10px;
+        border: 1px solid #ced4da;
+        outline: none;
+        font-size: 1rem;
+        width: 100%;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+        input:focus {
+            border-color: #3949ff;
+            box-shadow: 0 0 8px rgba(57, 73, 255, 0.5);
+        }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(135deg, #3949ff, #00c6ff);
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+        margin-top: 20px;
+    }
+
+        button:hover {
+            background: linear-gradient(135deg, #303f9f, #0288d1);
+            transform: scale(1.05);
+        }
+
+    .g1 {
+        text-align: center;
+        margin-top: 15px;
+        color: #555;
+    }
+
+    .a1 {
+        text-decoration: none;
+        font-weight: bold;
+        color: #3949ff;
+        transition: color 0.3s;
+    }
+
+        .a1:hover {
+            color: #00c6ff;
+            text-decoration: underline;
+        }
+
+</style>
+
+<form action="/Home/login" method="post">
+    <div id="loginContainer">
+        <h2 id="Heading">User Login</h2>
+
+
+        <div class="mb-3">
+            <label for="username" class="form-label"><i class="fas fa-user"></i>Username</label>
+            <input type="text" id="username" name="Username" class="form-control" placeholder="Enter your username" required />
+
+        </div>
+
+
+
+        <div class="mb-3">
+            <label for="password" class="form-label"><i class="fas fa-lock"></i>Password</label>
+            <input type="text" id="password" name="Password" class="form-control" placeholder="Enter your password" required />
+        </div>
+
+
+        <button type="submit"><i class="fas fa-sign-in-alt"></i>Login</button>
+
+
+
+    </div>
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+

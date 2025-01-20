@@ -1,0 +1,187 @@
+﻿@model WebApplication7.Models.LoginCredDum
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+        }
+
+        .registration-container {
+            background-color: #ffffff; /* White form container */
+            padding: 30px;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            margin-top: 50px; /* Margin from top */
+        }
+
+        .form-group label {
+            font-weight: bold; /* Bold labels */
+            color: #495057; /* Dark gray label text */
+        }
+
+        .form-control {
+            border-radius: 5px; /* Rounded input fields */
+            border: 1px solid #ced4da; /* Light gray border */
+        }
+
+            .form-control:focus {
+                border-color: #007bff; /* Blue border on focus (Bootstrap primary color) */
+                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Blue shadow on focus */
+            }
+
+        .btn-primary {
+            background-color: #007bff; /* Bootstrap primary blue */
+            border-color: #007bff;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3; /* Darker blue on hover */
+                border-color: #0056b3;
+            }
+
+        .text-danger {
+            font-size: 0.9rem; /* Smaller error messages */
+        }
+
+        h4 {
+            color: #343a40; /* Dark heading color */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        hr {
+            border-top: 1px solid #dee2e6; /* Light gray hr */
+        }
+
+        .back-to-list {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+            .back-to-list a {
+                color: #007bff;
+                text-decoration: none;
+            }
+
+                .back-to-list a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 registration-container">
+                <h4>Registration</h4>
+                <hr />
+                <form action="/Home/Create" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Username" class="control-label">Username</label>
+                        <input asp-for="Username" id="username" class="form-control" placeholder="Enter your username" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label">Email</label>
+                        <input asp-for="Email" id="email" type="email" class="form-control" placeholder="Enter your email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label">Password</label>
+                        <input asp-for="Password" id="pass" type="password" class="form-control" placeholder="Enter your password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CPassword" class="control-label">Confirm Password</label>
+                        <input asp-for="CPassword" id="cpass" type="password" class="form-control" placeholder="Confirm your password" />
+                        <span asp-validation-for="CPassword" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Image" class="control-label">Profile Image (Optional)</label>
+                        <input asp-for="Image" id="cimage" type="file" class="form-control" />
+                        <span asp-validation-for="Image" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Register" class="btn btn-primary btn-block" />
+                    </div>
+                </form>
+                <div class="back-to-list">
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+ <script>
+    document.querySelector("form").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Retrieve form values
+        var username = document.getElementById("username").value.trim();
+        var email = document.getElementById("email").value.trim();
+        var password = document.getElementById("pass").value.trim();
+        var confirmPassword = document.getElementById("cpass").value.trim();
+        var image = document.getElementById("cimage").value.trim();
+
+        // Validation
+        if (!username || !email || !password || !confirmPassword) {
+            Swal.fire("Warning!", "Please fill in all required fields.", "warning");
+            return;
+        }
+
+
+
+        if (password !== confirmPassword) {
+            Swal.fire("Error!", "Passwords do not match.", "error");
+            return;
+        }
+
+        if (image && !validateImage(image)) {
+            Swal.fire("Error!", "Please upload a valid image file (jpg, jpeg, png).", "error");
+            return;
+        }
+
+        // Success: Show confirmation and submit form
+        Swal.fire({
+            title: "Registration Successful!",
+            text: "Your registration has been submitted successfully.",
+            icon: "success",
+            confirmButtonText: "OK"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                event.target.submit(); // Submit the form
+            }
+        });
+    });
+
+    // Helper function to validate email format
+
+
+    // Helper function to validate image file format
+    function validateImage(image) {
+        var allowedExtensions = /\.(jpg|jpeg|png)$/i;
+        return allowedExtensions.test(image);
+    }
+</script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

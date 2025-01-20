@@ -1,0 +1,117 @@
+﻿@{
+    ViewData["Title"] = "AdminDash";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="text-primary">Admin Dashboard</h1>
+        <span class="badge bg-success fs-5">Session: @ViewData["i"]</span>
+    </div>
+
+    <!-- Dashboard Cards Section -->
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Total Users</h5>
+                    <p class="card-text fs-3">1,245</p>
+                    <i class="bi bi-people-fill fs-1"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-white bg-warning shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Pending Orders</h5>
+                    <p class="card-text fs-3">87</p>
+                    <i class="bi bi-hourglass-split fs-1"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-white bg-success shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Revenue</h5>
+                    <p class="card-text fs-3">$54,300</p>
+                    <i class="bi bi-currency-dollar fs-1"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-white bg-danger shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Issues Reported</h5>
+                    <p class="card-text fs-3">12</p>
+                    <i class="bi bi-exclamation-triangle-fill fs-1"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Activity Table -->
+    <div class="mt-5">
+        <h3 class="mb-3">Recent Appointments</h3>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered text-center align-middle shadow-sm rounded">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Patient ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Test Type</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>101</td>
+                        <td>John Doe</td>
+                        <td>Blood Test</td>
+                        <td>12/01/2025</td>
+                        <td><span class="badge bg-success">Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td>102</td>
+                        <td>Jane Smith</td>
+                        <td>X-Ray</td>
+                        <td>11/01/2025</td>
+                        <td><span class="badge bg-warning">Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>103</td>
+                        <td>Michael Johnson</td>
+                        <td>Covid Test</td>
+                        <td>10/01/2025</td>
+                        <td><span class="badge bg-danger">Cancelled</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Optional Custom CSS -->
+<style>
+    .card {
+        border-radius: 12px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+    .table th, .table td {
+        padding: 15px;
+    }
+
+    .table-responsive {
+        border-radius: 8px;
+        overflow: hidden;
+    }
+</style>
